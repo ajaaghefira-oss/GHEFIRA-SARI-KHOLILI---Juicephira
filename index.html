@@ -56,7 +56,6 @@
         list-style: none;
         display: flex;
         gap: 30px;
-        align-items: center;
       }
 
       nav ul li a {
@@ -70,14 +69,14 @@
         color: #222;
       }
 
-      /* Tombol keranjang di dalam menu */
+      /* Tombol keranjang kanan atas */
       .cart-toggle {
         font-size: 1.3rem;
         color: white;
-        background: transparent;
+        background: #ff9800;
         border: 2px solid white;
         border-radius: 50%;
-        padding: 8px 10px;
+        padding: 10px;
         cursor: pointer;
         transition: 0.3s;
       }
@@ -254,6 +253,14 @@
         }
       }
     </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WCM2ZTZ3PE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-WCM2ZTZ3PE');
+</script>
   </head>
 
   <body id="page-top">
@@ -272,14 +279,12 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
-          <!-- Pindahkan keranjang ke dalam menu -->
-          <li>
-            <button class="cart-toggle" id="cartToggle" title="Keranjang">
-              <i class="fas fa-shopping-cart"></i>
-            </button>
-          </li>
         </ul>
       </nav>
+
+      <div class="cart-toggle" id="cartToggle">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
     </header>
 
     <!-- Header / Hero -->
@@ -297,15 +302,150 @@
     <section class="content-section bg-light" id="about">
       <div class="container text-center">
         <h2>Tentang Juicephira</h2>
-        <p class="lead mb-5">
-          Juicephira adalah brand minuman sehat yang menghadirkan aneka jus buah segar dengan cita rasa alami dan kaya manfaat. Kami percaya bahwa gaya hidup sehat berawal dari hal sederhana seperti segelas jus segar setiap hari. Semua produk Juicephira dibuat dari buah pilihan berkualitas tinggi tanpa tambahan pengawet, pewarna, atau pemanis buatan.
-        </p>
+        <p class="lead mb-5">Juicephira adalah brand minuman sehat yang menghadirkan aneka jus buah segar dengan cita rasa alami dan kaya manfaat. Kami percaya bahwa gaya hidup sehat berawal dari hal sederhana seperti segelas jus segar setiap hari. Semua produk Juicephira dibuat dari buah pilihan berkualitas tinggi tanpa tambahan pengawet, pewarna, atau pemanis buatan, serta diproses dengan standar kebersihan tinggi agar kesegarannya tetap terjaga hingga di tangan pelanggan. Dengan visi menjadi brand jus lokal yang dikenal karena kualitas, keaslian rasa, dan komitmen terhadap hidup sehat, Juicephira terus berinovasi menghadirkan varian rasa baru yang lezat dan menyehatkan untuk menemani setiap momen segar dalam hidupmu.</p>
         <a class="btn btn-dark btn-xl" href="#services">Lihat Produk Kami</a>
       </div>
     </section>
 
-    <!-- Produk, Portfolio, dll tetap sama seperti sebelumnya -->
-    <!-- (kode kamu di bagian bawah tetap utuh, tidak dihapus) -->
+    <!-- Produk -->
+    <section class="content-section bg-primary text-white text-center" id="services">
+      <div class="container">
+        <h3 class="text-secondary mb-0">Produk Jus</h3>
+        <h2 class="mb-5">Best Seller</h2>
+        <div class="row">
+          <div class="col-lg-4 mb-5">
+            <img src="assets/img/jus-alpukat.jpg" alt="Jus Alpukat" />
+            <h4><strong>Jus Alpukat</strong></h4>
+            <p>Alpukat segar kaya vitamin dan lemak sehat!</p>
+            <div class="price">Rp 13.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Jus Alpukat" data-price="13000">Tambah ke Keranjang</button>
+          </div>
+          <div class="col-lg-4 mb-5">
+            <img src="assets/img/jus-mangga.jpg" alt="Jus Mangga" />
+            <h4><strong>Jus Mangga</strong></h4>
+            <p>Manis alami & menyegarkan, penuh vitamin A dan C.</p>
+            <div class="price">Rp 12.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Jus Mangga" data-price="12000">Tambah ke Keranjang</button>
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/img/sop-buahh.jpg" alt="Sop Buah" />
+            <h4><strong>Sop Buah</strong></h4>
+            <p>Campuran buah segar dengan susu dan es.</p>
+            <div class="price">Rp 18.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Sop Buah" data-price="18000">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+      <div class="container text-center">
+        <h3 class="text-secondary mb-0">Portfolio</h3>
+        <h2 class="mb-5">Varian Jus Kami</h2>
+        <div class="row gx-4 gy-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-sirsak.jpg" alt="Jus Sirsak" />
+              <div class="product-info">
+                <h4>Jus Sirsak</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Sirsak" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-nanas.jpg" alt="Jus Nanas" />
+              <div class="product-info">
+                <h4>Jus Nanas</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Nanas" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-apel.jpg" alt="Jus Apel" />
+              <div class="product-info">
+                <h4>Jus Apel</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">1</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Apel" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-jambumerah.jpg" alt="Jus Jambu merah" />
+              <div class="product-info">
+                <h4>Jus Jambu merah</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Jambu merah" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-stroberi.jpg" alt="Jus Stroberi" />
+              <div class="product-info">
+                <h4>Jus Stroberi</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Stroberi" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-melon.jpg" alt="Jus Melon" />
+              <div class="product-info">
+                <h4>Jus Melon</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Melon" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Peta -->
+    <div class="map" id="contact">
+      <h3 class="text-center mb-3">Lokasi Kami</h3>
+      <p class="text-center mb-3">
+        📍 <strong>Perumahan Legok Indah, Jl. Menteng, Blok A12 A No.02</strong><br />
+        <a href="https://www.google.com/maps?q=Perumahan+Legok+Indah,+Jl.+Menteng,+Blok+A12+A+No.02" target="_blank" style="color:#ff9800; font-weight:bold; text-decoration:none;">
+          Buka di Google Maps
+        </a>
+      </p>
+      <iframe
+        src="https://www.google.com/maps?q=Perumahan+Legok+Indah,+Jl.+Menteng,+Blok+A12+A+No.02&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item"><a class="social-link rounded-circle text-white mr-3" href="#"><i class="icon-social-facebook"></i></a></li>
+          <li class="list-inline-item"><a class="social-link rounded-circle text-white mr-3" href="#"><i class="icon-social-instagram"></i></a></li>
+        </ul>
+        <p class="text-muted small mb-0">Copyright &copy; Juicephira 2025</p>
+      </div>
+    </footer>
 
     <!-- Sidebar Keranjang -->
     <div id="cart-sidebar">
