@@ -33,51 +33,35 @@
         border-color: #ff6b9c;
       }
 
-      /* Tombol menu (hamburger) */
-      #menu-toggle {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        background-color: #b59b3b;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-        cursor: pointer;
-        z-index: 1100;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      /* Navbar */
+      .navbar {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
-      #menu-toggle:hover {
-        background-color: #a28a33;
+      .navbar-brand {
+        font-weight: 700;
+        color: #f78fb3 !important;
       }
 
-      /* Sidebar menu */
-      #sidebar {
-        position: fixed;
-        top: 0;
-        left: -260px;
-        width: 240px;
-        height: 100%;
-        background-color: #fff;
-        box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
-        transition: left 0.4s ease;
-        z-index: 1099;
-        padding: 60px 20px;
+      /* Tombol menu baru */
+      .navbar-toggler {
+        background-color: #b59b3b;
+        border: none;
+        border-radius: 8px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
       }
-      #sidebar.active {
-        left: 0;
+      .navbar-toggler:hover {
+        background-color: #a28a33;
       }
-      #sidebar a {
-        display: block;
-        color: #333;
-        text-decoration: none;
-        padding: 10px 0;
-        font-weight: 600;
-      }
-      #sidebar a:hover {
-        color: #f78fb3;
+      .navbar-toggler .fa-bars {
+        color: #fff;
+        font-size: 22px;
       }
 
       /* Hero */
@@ -137,6 +121,7 @@
         background-color: #f78fb3;
         color: white;
       }
+
       .btn-back {
         background-color: #ccc;
         color: #333;
@@ -150,19 +135,24 @@
   </head>
 
   <body id="page-top">
-    <!-- Tombol Menu -->
-    <button id="menu-toggle"><i class="fa fa-bars"></i></button>
-
-    <!-- Sidebar Navigasi -->
-    <div id="sidebar">
-      <a href="#page-top">🏠 Beranda</a>
-      <a href="#about">Tentang</a>
-      <a href="#produk">Produk</a>
-      <a href="#portfolio">Varian</a>
-      <a href="#contact">Kontak</a>
-      <hr />
-      <a href="#" id="cart-icon"><i class="fa fa-shopping-cart"></i> Keranjang</a>
-    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">Juicephira</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#about">Tentang</a></li>
+            <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Varian</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+          </ul>
+          <i class="fa fa-shopping-cart" id="cart-icon" title="Lihat Keranjang"></i>
+        </div>
+      </div>
+    </nav>
 
     <!-- Hero -->
     <header class="masthead text-center text-white">
@@ -188,7 +178,7 @@
       </div>
     </section>
 
-    <!-- Produk -->
+    <!-- Produk Jus Best Seller -->
     <section id="produk" class="content-section">
       <div class="container text-center">
         <h2 class="mb-5 text-primary">Produk Jus Best Seller</h2>
@@ -229,7 +219,7 @@
       </div>
     </section>
 
-    <!-- Varian -->
+    <!-- Varian Jus Kami -->
     <section id="portfolio" class="content-section bg-light">
       <div class="container text-center">
         <h2 class="text-primary mb-5">Varian Jus Kami</h2>
@@ -282,8 +272,6 @@
 
     <!-- Script -->
     <script>
-      const menuToggle = document.getElementById("menu-toggle");
-      const sidebar = document.getElementById("sidebar");
       const cartIcon = document.getElementById("cart-icon");
       const cart = document.getElementById("cart");
       const closeCart = document.getElementById("close-cart");
@@ -291,12 +279,6 @@
       const cartTotal = document.getElementById("cart-total");
       let total = 0;
 
-      // Toggle sidebar
-      menuToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("active");
-      });
-
-      // Keranjang
       cartIcon.onclick = () => cart.classList.add("active");
       closeCart.onclick = () => cart.classList.remove("active");
 
@@ -321,5 +303,7 @@
         cart.classList.remove("active");
       });
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
