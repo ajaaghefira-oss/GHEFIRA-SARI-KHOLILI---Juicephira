@@ -6,40 +6,56 @@
     <title>GHEFIRA SARI KHOLILI - Juicephira</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
     <style>
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: "Source Sans Pro", sans-serif;
       }
 
       body {
-        font-family: "Poppins", sans-serif;
-        background-color: #ffe6f2;
+        background: #fff;
         color: #333;
       }
 
+      /* Navbar horizontal */
       header {
-        background-color: #ff66b2;
-        color: white;
-        padding: 10px 20px;
+        width: 100%;
+        background-color: #ff9800;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: sticky;
+        padding: 15px 40px;
+        position: fixed;
         top: 0;
-        z-index: 1000;
+        left: 0;
+        z-index: 3000;
       }
 
-      header h1 {
-        font-size: 20px;
+      .logo {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo i {
+        background: #fff;
+        color: #ff9800;
+        border-radius: 5px;
+        padding: 6px 8px;
       }
 
       nav ul {
         list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 30px;
       }
 
       nav ul li a {
@@ -50,150 +66,376 @@
       }
 
       nav ul li a:hover {
-        color: #ffe6f2;
+        color: #222;
       }
 
-      /* --- Map Section --- */
-      .map-section {
-        background-color: #fff;
-        margin: 40px auto;
-        width: 90%;
-        max-width: 900px;
+      /* Tombol keranjang kanan atas */
+      .cart-toggle {
+        font-size: 1.3rem;
+        color: white;
+        background: #ff9800;
+        border: 2px solid white;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .cart-toggle:hover {
+        background: white;
+        color: #ff9800;
+      }
+
+      /* Hero Section */
+      .masthead {
+        margin-top: 80px;
+        background: url("assets/img/pp-jusbaru.jpg") center/cover no-repeat;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .masthead .container {
+        background: rgba(0, 0, 0, 0.4);
+        padding: 50px;
+        border-radius: 20px;
+      }
+
+      /* Produk & Kartu */
+      .product-card {
+        background: #fff;
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        text-align: center;
+        padding: 15px;
+        transition: 0.3s;
       }
 
-      .map-section h2 {
-        color: #ff3385;
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-card img {
+        border-radius: 15px;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .product-info {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .price {
+        color: #ff9800;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+
+      .quantity-control {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         margin-bottom: 10px;
       }
 
-      .map-section p {
-        margin-bottom: 15px;
+      .quantity-control button {
+        background: #ff9800;
+        border: none;
+        color: #fff;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
       }
 
-      iframe {
-        width: 100%;
-        height: 350px;
-        border: 0;
+      .add-to-cart {
+        background: #fff;
+        color: #ff9800;
+        border: 2px solid #ff9800;
         border-radius: 10px;
-      }
-
-      .map-btn {
-        display: inline-block;
-        background-color: #ff66b2;
-        color: white;
-        padding: 10px 20px;
-        margin-top: 15px;
-        border-radius: 25px;
+        padding: 5px 15px;
         font-weight: 600;
-        text-decoration: none;
-        transition: background 0.3s;
+        transition: 0.3s;
       }
 
-      .map-btn:hover {
-        background-color: #ff3385;
+      .add-to-cart:hover {
+        background: #ff9800;
+        color: #fff;
       }
 
-      footer {
-        background-color: #ff66b2;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin-top: 30px;
-      }
-
-      /* --- Sidebar Keranjang --- */
-      .cart-sidebar {
+      /* Sidebar Keranjang */
+      #cart-sidebar {
         position: fixed;
-        right: -400px;
         top: 0;
-        width: 300px;
+        right: -400px;
+        width: 350px;
         height: 100%;
-        background-color: #fff;
-        box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
-        transition: right 0.3s ease;
+        background: #fff;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: 0.4s;
+        z-index: 3500;
         padding: 20px;
-        z-index: 1001;
+        overflow-y: auto;
       }
 
-      .cart-sidebar.active {
+      #cart-sidebar.active {
         right: 0;
       }
 
       .checkout-btn,
       .back-btn {
         width: 100%;
-        margin-top: 10px;
         padding: 10px;
+        margin-top: 10px;
         border: none;
         border-radius: 8px;
-        cursor: pointer;
         font-weight: bold;
+        cursor: pointer;
       }
 
       .checkout-btn {
-        background-color: #ff66b2;
+        background: #ff9800;
         color: white;
       }
 
+      .checkout-btn:hover {
+        background: #e68900;
+      }
+
       .back-btn {
-        background-color: #ddd;
+        background: #ccc;
+      }
+
+      .back-btn:hover {
+        background: #aaa;
+      }
+
+      footer {
+        background: #f5f5f5;
+        padding: 40px 0;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        nav ul {
+          flex-direction: column;
+          background-color: #ff9800;
+          position: absolute;
+          top: 70px;
+          right: 0;
+          width: 200px;
+          display: none;
+          text-align: right;
+          padding: 15px;
+        }
+
+        nav ul.show {
+          display: block;
+        }
+
+        .menu-toggle {
+          display: block;
+          font-size: 1.5rem;
+          color: white;
+          cursor: pointer;
+        }
+      }
+
+      @media (min-width: 769px) {
+        .menu-toggle {
+          display: none;
+        }
       }
     </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WCM2ZTZ3PE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WCM2ZTZ3PE');
+</script>
   </head>
 
-  <body>
+  <body id="page-top">
+    <!-- Navbar Horizontal -->
     <header>
-      <h1>Juicephira</h1>
+      <div class="logo">
+        <i class="fa-solid fa-blender"></i> Juicephira
+      </div>
+
+      <i class="fa-solid fa-bars menu-toggle" id="menu-toggle"></i>
+
       <nav>
         <ul id="nav-list">
-          <li><a href="#home">Beranda</a></li>
-          <li><a href="#produk">Produk</a></li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="#page-top">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <i class="fa-solid fa-cart-shopping" id="cartToggle" style="cursor:pointer;"></i>
+
+      <div class="cart-toggle" id="cartToggle">
+        <i class="fas fa-shopping-cart"></i>
+      </div>
     </header>
 
-    <!-- === MAP SECTION === -->
-    <section class="map-section" id="contact">
-      <h2>Lokasi Kami</h2>
-      <p>Perumahan Legok Indah, Jl. Menteng, Blok A12 A No 02</p>
+    <!-- Header / Hero -->
+    <header class="masthead">
+      <div class="container">
+        <h1 class="mb-3">Juicephira</h1>
+        <h3 class="mb-5">
+          <em>Kami meracik setiap botol dengan cinta. Nikmati cita rasa alami di setiap tegukan segar dan menyehatkan!</em>
+        </h3>
+        <a class="btn btn-primary btn-xl" href="#about">Berikutnya</a>
+      </div>
+    </header>
 
-      <iframe
-        src="https://www.google.com/maps?q=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02&output=embed"
-        allowfullscreen=""
-        loading="lazy"
-      ></iframe>
-
-      <!-- Tombol Menuju ke Google Maps Aplikasi -->
-      <a
-        class="map-btn"
-        href="geo:0,0?q=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02"
-      >
-        📍 Buka di Aplikasi Google Maps
-      </a>
-
-      <!-- Tombol Menuju ke Google Maps Web -->
-      <a
-        class="map-btn"
-        href="https://www.google.com/maps/dir/?api=1&destination=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        🌐 Buka di Google Maps Web
-      </a>
+    <!-- Tentang -->
+    <section class="content-section bg-light" id="about">
+      <div class="container text-center">
+        <h2>Tentang Juicephira</h2>
+        <p class="lead mb-5">Juicephira adalah brand minuman sehat yang menghadirkan aneka jus buah segar dengan cita rasa alami dan kaya manfaat. Kami percaya bahwa gaya hidup sehat berawal dari hal sederhana seperti segelas jus segar setiap hari. Semua produk Juicephira dibuat dari buah pilihan berkualitas tinggi tanpa tambahan pengawet, pewarna, atau pemanis buatan, serta diproses dengan standar kebersihan tinggi agar kesegarannya tetap terjaga hingga di tangan pelanggan. Dengan visi menjadi brand jus lokal yang dikenal karena kualitas, keaslian rasa, dan komitmen terhadap hidup sehat, Juicephira terus berinovasi menghadirkan varian rasa baru yang lezat dan menyehatkan untuk menemani setiap momen segar dalam hidupmu.</p>
+        <a class="btn btn-dark btn-xl" href="#services">Lihat Produk Kami</a>
+      </div>
     </section>
 
-    <footer>
-      <p>&copy; 2025 Juicephira. Semua hak dilindungi.</p>
+    <!-- Produk -->
+    <section class="content-section bg-primary text-white text-center" id="services">
+      <div class="container">
+        <h3 class="text-secondary mb-0">Produk Jus</h3>
+        <h2 class="mb-5">Best Seller</h2>
+        <div class="row">
+          <div class="col-lg-4 mb-5">
+            <img src="assets/img/jus-alpukat.jpg" alt="Jus Alpukat" />
+            <h4><strong>Jus Alpukat</strong></h4>
+            <p>Alpukat segar kaya vitamin dan lemak sehat!</p>
+            <div class="price">Rp 13.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Jus Alpukat" data-price="13000">Tambah ke Keranjang</button>
+          </div>
+          <div class="col-lg-4 mb-5">
+            <img src="assets/img/jus-mangga.jpg" alt="Jus Mangga" />
+            <h4><strong>Jus Mangga</strong></h4>
+            <p>Manis alami & menyegarkan, penuh vitamin A dan C.</p>
+            <div class="price">Rp 12.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Jus Mangga" data-price="12000">Tambah ke Keranjang</button>
+          </div>
+          <div class="col-lg-4">
+            <img src="assets/img/sop-buahh.jpg" alt="Sop Buah" />
+            <h4><strong>Sop Buah</strong></h4>
+            <p>Campuran buah segar dengan susu dan es.</p>
+            <div class="price">Rp 18.000</div>
+            <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+            <button class="add-to-cart" data-name="Sop Buah" data-price="18000">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+      <div class="container text-center">
+        <h3 class="text-secondary mb-0">Portfolio</h3>
+        <h2 class="mb-5">Varian Jus Kami</h2>
+        <div class="row gx-4 gy-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-sirsak.jpg" alt="Jus Sirsak" />
+              <div class="product-info">
+                <h4>Jus Sirsak</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Sirsak" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-nanas.jpg" alt="Jus Nanas" />
+              <div class="product-info">
+                <h4>Jus Nanas</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Nanas" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-apel.jpg" alt="Jus Apel" />
+              <div class="product-info">
+                <h4>Jus Apel</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">1</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Apel" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-jambumerah.jpg" alt="Jus Jambu merah" />
+              <div class="product-info">
+                <h4>Jus Jambu merah</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Jambu merah" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-stroberi.jpg" alt="Jus Stroberi" />
+              <div class="product-info">
+                <h4>Jus Stroberi</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Stroberi" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="product-card">
+              <img src="assets/img/jus-melon.jpg" alt="Jus Melon" />
+              <div class="product-info">
+                <h4>Jus Melon</h4>
+                <div class="price">Rp 12.000</div>
+                <div class="quantity-control"><button class="decrease">-</button><span class="qty">0</span><button class="increase">+</button></div>
+                <button class="add-to-cart" data-name="Jus Melon" data-price="12000">Tambah ke Keranjang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Peta -->
+    <div class="map" id="contact">
+      <iframe src="https://www.google.com/maps?q=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02&output=embed" width="100%" height="400" style="border:0"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item"><a class="social-link rounded-circle text-white mr-3" href="#"><i class="icon-social-facebook"></i></a></li>
+          <li class="list-inline-item"><a class="social-link rounded-circle text-white mr-3" href="#"><i class="icon-social-instagram"></i></a></li>
+        </ul>
+        <p class="text-muted small mb-0">Copyright &copy; Juicephira 2025</p>
+      </div>
     </footer>
 
-    <!-- === SIDEBAR KERANJANG === -->
-    <div class="cart-sidebar" id="cart-sidebar">
+    <!-- Sidebar Keranjang -->
+    <div id="cart-sidebar">
       <h3>Keranjang Belanja</h3>
       <div id="cart-items"></div>
       <div class="cart-total">Total: Rp <span id="cart-total">0</span></div>
@@ -202,6 +444,14 @@
     </div>
 
     <script>
+      // Menu toggle responsive
+      const toggle = document.getElementById("menu-toggle");
+      const navList = document.getElementById("nav-list");
+      toggle.addEventListener("click", () => {
+        navList.classList.toggle("show");
+      });
+
+      // Keranjang
       const cart = [],
         cartSidebar = document.getElementById("cart-sidebar"),
         cartItems = document.getElementById("cart-items"),
@@ -209,6 +459,27 @@
 
       document.getElementById("cartToggle").onclick = () => cartSidebar.classList.toggle("active");
       document.getElementById("backBtn").onclick = () => cartSidebar.classList.remove("active");
+
+      document.querySelectorAll(".increase").forEach((b) => (b.onclick = () => b.parentNode.querySelector(".qty").textContent++));
+      document.querySelectorAll(".decrease").forEach(
+        (b) =>
+          (b.onclick = () => {
+            let q = b.parentNode.querySelector(".qty");
+            if (q.textContent > 1) q.textContent--;
+          })
+      );
+
+      document.querySelectorAll(".add-to-cart").forEach(
+        (b) =>
+          (b.onclick = () => {
+            const n = b.dataset.name,
+              p = parseInt(b.dataset.price),
+              q = parseInt(b.parentNode.querySelector(".qty")?.textContent) || 1;
+            const e = cart.find((i) => i.name === n);
+            e ? (e.qty += q) : cart.push({ name: n, price: p, qty: q });
+            render();
+          })
+      );
 
       function render() {
         cartItems.innerHTML = "";
@@ -221,7 +492,7 @@
       }
 
       document.getElementById("checkoutBtn").onclick = () => {
-        if (!cart.length) return alert("Keranjang masih kosong!");
+        if (!cart.length) return alert("Pesanan Berhasil!");
         alert("Terima kasih telah berbelanja!");
         cart.length = 0;
         render();
