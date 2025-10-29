@@ -16,7 +16,7 @@
       }
       body {
         margin: 0;
-        background-color: #fff0f5;
+        background-color: #ffe4ec;
         color: #333;
       }
 
@@ -33,7 +33,7 @@
       }
 
       header h1 {
-        font-size: 24px;
+        font-size: 22px;
         margin: 0;
       }
 
@@ -105,10 +105,6 @@
         margin: 10px 0 5px;
       }
 
-      .product p {
-        margin: 0;
-      }
-
       .add-to-cart {
         background-color: #ff69b4;
         color: white;
@@ -178,7 +174,13 @@
       .contact {
         padding: 40px 20px;
         text-align: center;
-        background-color: #ffe4ec;
+        background-color: #fff0f5;
+        border-radius: 20px;
+        margin: 20px;
+      }
+
+      .contact h2 {
+        color: #ff1493;
       }
 
       .map iframe {
@@ -188,15 +190,22 @@
         border-radius: 12px;
       }
 
-      .map-btn {
+      .map-buttons {
         margin-top: 15px;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .map-btn {
         background-color: #ff69b4;
         color: white;
         padding: 10px 20px;
-        border-radius: 12px;
+        border-radius: 25px;
         text-decoration: none;
         font-weight: 500;
+        display: inline-block;
       }
 
       .map-btn:hover {
@@ -212,13 +221,13 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <h1>Juicephira</h1>
       <nav>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#home">Beranda</a></li>
           <li><a href="#products">Produk</a></li>
           <li><a href="#contact">Kontak</a></li>
         </ul>
@@ -238,45 +247,56 @@
           <img src="assets/jus-strawberry.jpg" alt="Jus Strawberry" />
           <h3>Jus Strawberry</h3>
           <p>Rp 15.000</p>
-          <button class="add-to-cart" data-name="Jus Strawberry" data-price="15000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Strawberry" data-price="15000">
+            Tambah ke Keranjang
+          </button>
         </div>
         <div class="product">
           <img src="assets/jus-mangga.jpg" alt="Jus Mangga" />
           <h3>Jus Mangga</h3>
           <p>Rp 14.000</p>
-          <button class="add-to-cart" data-name="Jus Mangga" data-price="14000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Mangga" data-price="14000">
+            Tambah ke Keranjang
+          </button>
         </div>
         <div class="product">
           <img src="assets/jus-alpukat.jpg" alt="Jus Alpukat" />
           <h3>Jus Alpukat</h3>
           <p>Rp 16.000</p>
-          <button class="add-to-cart" data-name="Jus Alpukat" data-price="16000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Alpukat" data-price="16000">
+            Tambah ke Keranjang
+          </button>
         </div>
         <div class="product">
           <img src="assets/jus-semangka.jpg" alt="Jus Semangka" />
           <h3>Jus Semangka</h3>
           <p>Rp 13.000</p>
-          <button class="add-to-cart" data-name="Jus Semangka" data-price="13000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Semangka" data-price="13000">
+            Tambah ke Keranjang
+          </button>
         </div>
         <div class="product">
           <img src="assets/jus-melon.jpg" alt="Jus Melon" />
           <h3>Jus Melon</h3>
           <p>Rp 13.000</p>
-          <button class="add-to-cart" data-name="Jus Melon" data-price="13000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Melon" data-price="13000">
+            Tambah ke Keranjang
+          </button>
         </div>
         <div class="product">
           <img src="assets/jus-naga.jpg" alt="Jus Buah Naga" />
           <h3>Jus Buah Naga</h3>
           <p>Rp 15.000</p>
-          <button class="add-to-cart" data-name="Jus Buah Naga" data-price="15000">Tambah ke Keranjang</button>
+          <button class="add-to-cart" data-name="Jus Buah Naga" data-price="15000">
+            Tambah ke Keranjang
+          </button>
         </div>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <h2>Hubungi Kami</h2>
-      <p><b>Alamat:</b> Perumahan Legok Indah, Jl. Menteng, Blok A12 A No 02</p>
-
+      <h2>Lokasi Kami</h2>
+      <p><b>Perumahan Legok Indah, Jl. Menteng, Blok A12 A No 02</b></p>
       <div class="map">
         <iframe
           src="https://www.google.com/maps?q=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02&output=embed"
@@ -285,19 +305,25 @@
         ></iframe>
       </div>
 
-      <!-- Tombol menuju aplikasi Google Maps -->
-      <a
-        class="map-btn"
-        href="https://www.google.com/maps/dir/?api=1&destination=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02"
-        target="_blank"
-        >Buka di Google Maps 📍</a>
+      <div class="map-buttons">
+        <a
+          class="map-btn"
+          href="geo:0,0?q=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02"
+          >📱 Buka di Aplikasi Google Maps</a
+        >
+        <a
+          class="map-btn"
+          href="https://www.google.com/maps/dir/?api=1&destination=Perumahan+Legok+Indah,+Jl+Menteng,+Blok+A12+A+No+02"
+          target="_blank"
+          >🌐 Buka di Google Maps Web</a
+        >
+      </div>
     </section>
 
     <footer>
       <p>&copy; 2025 Juicephira - Ghefira Sari Kholili</p>
     </footer>
 
-    <!-- Sidebar Keranjang -->
     <div class="cart-sidebar" id="cart-sidebar">
       <h3>Keranjang Belanja</h3>
       <div id="cart-items"></div>
@@ -312,8 +338,10 @@
       const cartItems = document.getElementById("cart-items");
       const cartTotal = document.getElementById("cart-total");
 
-      document.getElementById("cartToggle").onclick = () => cartSidebar.classList.toggle("active");
-      document.getElementById("backBtn").onclick = () => cartSidebar.classList.remove("active");
+      document.getElementById("cartToggle").onclick = () =>
+        cartSidebar.classList.toggle("active");
+      document.getElementById("backBtn").onclick = () =>
+        cartSidebar.classList.remove("active");
 
       document.querySelectorAll(".add-to-cart").forEach((b) => {
         b.onclick = () => {
